@@ -77,7 +77,6 @@ public final class VectorLoglessPairHMM extends LoglessPairHMM {
                 if (!isSupported) {
                     throw new UserException.HardwareFeatureException("Machine does not support OpenMP AVX PairHMM.");
                 }
-                logger.info("Maximum number of OpenMP threads for AVX : " + args.maxNumberOfThreads);
                 break;
 
             case FPGA:
