@@ -179,9 +179,6 @@ public abstract class BaseTest {
         return popts;
     }
 
-    public static AuthHolder getAuthentication(){
-        return new AuthHolder("test-app",getGCPTestApiKey());
-    }
     @BeforeClass
     public void initGenomeLocParser() throws FileNotFoundException {
         hg19ReferenceReader = new CachingIndexedFastaSequenceFile(new File(hg19MiniReference));
