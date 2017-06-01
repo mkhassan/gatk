@@ -33,6 +33,7 @@ public abstract class HaplotypeBAMDestination {
         bamOutputHeader = new SAMFileHeader();
         bamOutputHeader.setSequenceDictionary(sourceHeader.getSequenceDictionary());
         bamOutputHeader.setSortOrder(SAMFileHeader.SortOrder.coordinate);
+        bamOutputHeader.setProgramRecords(sourceHeader.getProgramRecords());
 
         final List<SAMReadGroupRecord> readGroups = new ArrayList<>();
         readGroups.addAll(sourceHeader.getReadGroups()); // include the original read groups
