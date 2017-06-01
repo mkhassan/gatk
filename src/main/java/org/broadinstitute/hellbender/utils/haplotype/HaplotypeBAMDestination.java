@@ -33,7 +33,6 @@ public abstract class HaplotypeBAMDestination {
         bamOutputHeader = new SAMFileHeader();
         bamOutputHeader.setSequenceDictionary(sourceHeader.getSequenceDictionary());
         bamOutputHeader.setSortOrder(SAMFileHeader.SortOrder.coordinate);
-        bamOutputHeader.setProgramRecords(sourceHeader.getProgramRecords());
 
         final List<SAMReadGroupRecord> readGroups = new ArrayList<>();
         readGroups.addAll(sourceHeader.getReadGroups()); // include the original read groups
@@ -44,8 +43,9 @@ public abstract class HaplotypeBAMDestination {
         rgRec.setSequencingCenter("BI");
         readGroups.add(rgRec);
         bamOutputHeader.setReadGroups(readGroups);
-
-        bamOutputHeader.addProgramRecord(new SAMProgramRecord("HalpotypeBAMWriter"));
+        final List<SAMProgramRecord> programRecords = new ArrayList<>(sourceHeader.getProgramRecords());
+        programRecords.add(new SAMProgramRecord("HalpotypeBAMWriter"));
+        bamOutputHeader.setProgramRecords(programRecords);
     }
 
     /**
